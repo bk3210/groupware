@@ -62,4 +62,7 @@
 				, user_aprv_yn=#{userAprvYn}
 		where user_no=#{userNo}
 	</update>
+	
+	
+	
 </mapper>
