@@ -4,15 +4,22 @@
 	 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="Hobby">
-	<!--<select id="Hobby_getList" parameterType="HobbyDTO" resultType="HobbyDTO">
-		SELECT
-			user_hobby_hobby_no
-			, user_hobby_user_no
-		WHERE 
-	</select>-->
+	<select id="Hobby_getList" parameterType="HobbyDTO" resultType="HobbyDTO">
+		SELECT user_hobby_hobby_no
+				, user_hobby_user_no
+		FROM user_hobby
+		
+	</select>
 	
 	<insert id="Hobby_insert" parameterType="HobbyDTO">
-		
+		INSERT INTO user_hobby (
+								user_hobby_hobby_no
+								, user_hobby_user_no
+								)
+							values (
+								#{userHobbyHobbyNo}
+								, #{userHobbyUserNo}
+								)
 	</insert>
 	
 <!--	<update id="User_update" parameterType="UserDTO">

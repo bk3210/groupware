@@ -6,11 +6,13 @@
 <typeAliases> 
 	<typeAlias alias="UserDTO"     type="com.ds.gwapp.domain.UserDTO"/>
 	<typeAlias alias="HobbyDTO"     type="com.ds.gwapp.domain.HobbyDTO"/>
+	<typeAlias alias="DeptDTO"     type="com.ds.gwapp.domain.DeptDTO"/>
 	</typeAliases>
 
 	<mappers> 
 	  <mapper resource=	"mapper/User.xml"	/>
 	  <mapper resource= "mapper/Hobby.xml"	/>
+	  <mapper resource= "mapper/Dept.xml"	/>
 	</mappers>
 	
 </configuration>
