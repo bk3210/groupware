@@ -16,8 +16,6 @@
 			, user_nm
 			, user_eml_addr
 			, COALESCE(user_dept_no, 0) AS user_dept_no
-			, COALESCE(user_telno, ' ') AS user_telno
-			, COALESCE(user_addr, ' ') AS user_addr
 			, user_aprv_yn
 		FROM public.user
 	</select>
@@ -45,12 +43,19 @@
 		)
 	</insert>
 	
+	<select id="User_getDetail" parameterType="UserDTO" resultType="UserDTO">
+		SELECT user_no
+			, user_id
+			, user_nm
+			, user_eml_addr
+			, user_dept_no
+			, user_telno
+			, user_aprv_yn
+		FROM public.user
+		WHERE user_no=#{userNo}
+	</select>
+			
 	<update id="User_update" parameterType="UserDTO">
-		<selectKey resultType="java.lang.String" keyProperty="deptNo" order="AFTER">
-			SELECT a.hobby_nm
-			FROM a.hobby
-			WHERE 
-		</selectKey>
 		UPDATE public.user AS a.user
 		INNER JOIN user_hobby AS b.user_hobby
 			SET user_id=#{userId}
@@ -62,7 +67,5 @@
 				, user_aprv_yn=#{userAprvYn}
 		where user_no=#{userNo}
 	</update>
-	
-	
 	
 </mapper>

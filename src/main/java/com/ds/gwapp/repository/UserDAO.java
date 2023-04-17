@@ -1,11 +1,12 @@
-package com.ds.gwapp.user.repository;
+package com.ds.gwapp.repository;
 
 import java.util.List;
 
-import com.ds.gwapp.user.domain.UserDTO;
+import com.ds.gwapp.domain.UserDTO;
 
 public interface UserDAO {
 	List<UserDTO> getList(UserDTO dto);
 	void insert(UserDTO dto);
-
+	void modify(UserDTO dto);
+	void delete(UserDTO dto);
 }

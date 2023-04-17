@@ -1,4 +1,4 @@
-package com.ds.gwapp.user.domain;
+package com.ds.gwapp.domain;
 
 import lombok.Getter;
 import lombok.Setter;

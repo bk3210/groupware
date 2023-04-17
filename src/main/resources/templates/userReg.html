@@ -8,7 +8,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 </head>
 <body>
-<form name="myform" id="myform" method="POST" th:object="${userDTO}" th.action="@{/user/save}">
+<form name="myform" id="myform" method="POST" action="/user/save">
 <div class="container mt-3">
   <h3>사원 등록 요청</h3>
 
@@ -24,7 +24,7 @@
         	 <div class="input-group">
 			    <input type="text" class="form-control" 
 			    placeholder="아이디를 입력하세요"
-			    name="userId" id="userId" th:value="${userId}">
+			    name="userId" id="userId">
 			 </div>
         </td>
       </tr>
@@ -34,7 +34,7 @@
         	 <div class="input-group">
 			    <input type="text" class="form-control" 
 			    placeholder="이름을 입력하세요"
-			    name="userNm" id="userNm" th:value="${userNm}">
+			    name="userNm" id="userNm">
 			 </div>
         </td>
       </tr>
@@ -44,7 +44,7 @@
         	 <div class="input-group">
 			    <input type="email" class="form-control" 
 			    placeholder="이메일을 입력하세요"
-			    name="userEmlAddr" id="userEmlAddr" th:value="${userEmlAddr}">
+			    name="userEmlAddr" id="userEmlAddr">
 			 </div>
         </td>
       </tr>
@@ -72,6 +72,7 @@
 				}
 			})
 			.fail((res, status, error)=>{
+				alert(res.msg);
 				console.log(data);
 				console.log(error);		
 			})

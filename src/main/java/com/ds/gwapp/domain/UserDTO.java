@@ -1,4 +1,4 @@
-package com.ds.gwapp.user.domain;
+package com.ds.gwapp.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -20,5 +20,8 @@ public class UserDTO {
 	private String userTelno;
 	private String userAddr;
 	private String userAprvYn;
+	
+	private String deptNo;
+	private String deptNm;
 
 }

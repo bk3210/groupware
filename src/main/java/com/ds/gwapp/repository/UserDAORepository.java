@@ -1,4 +1,4 @@
-package com.ds.gwapp.user.repository;
+package com.ds.gwapp.repository;
 
 import java.util.List;
 
@@ -6,7 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.ds.gwapp.user.domain.UserDTO;
+import com.ds.gwapp.domain.UserDTO;
 
 
 @Repository("userDAO")
@@ -22,5 +22,17 @@ public class UserDAORepository implements UserDAO {
 	@Override
 	public void insert(UserDTO dto) {
 		sm.insert("User_insert", dto);
+	}
+	
+	@Override
+	public void modify(UserDTO dto) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	@Override
+	public void delete(UserDTO dto) {
+		// TODO Auto-generated method stub
+		
 	}
 }

@@ -9,12 +9,11 @@
 			dept_no
 			, dept_id
 			, dept_nm
-			, dept_oper_yn
-		FROM dept
-		ORDER BY dept_id		
+		FROM public.dept
+		ORDER BY dept_no		
 	</select>
 	
-<!--	<insert id="Hobby_insert" parameterType="HobbyDTO">
+<!--	<insert id="Dept_insert" parameterType="DeptDTO">
 		
 	</insert>-->
 	
