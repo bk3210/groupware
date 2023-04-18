@@ -11,13 +11,17 @@
 	
 	<select id="User_getList" parameterType="UserDTO" resultType="UserDTO">
 		SELECT
-			user_no
-			, user_id
-			, user_nm
-			, user_eml_addr
-			, COALESCE(user_dept_no, 0) AS user_dept_no
-			, user_aprv_yn
-		FROM public.user
+			A.user_no
+			, A.user_id
+			, A.user_nm
+			, A.user_eml_addr
+			, COALESCE(user_dept_no, 1) AS user_dept_no
+			, A.user_aprv_yn
+			, B.dept_nm
+		FROM public."user" A
+		LEFT JOIN public."dept" B
+		ON A.user_dept_no = B.dept_no
+		
 	</select>
 	
 	<insert id="User_insert" parameterType="UserDTO">
@@ -43,13 +47,14 @@
 		)
 	</insert>
 	
-	<select id="User_getDetail" parameterType="UserDTO" resultType="UserDTO">
+	<select id="User_getView" parameterType="int" resultType="UserDTO">
 		SELECT user_no
 			, user_id
 			, user_nm
 			, user_eml_addr
-			, user_dept_no
-			, user_telno
+			, COALESCE(user_dept_no, 0) AS user_dept_no
+			, COALESCE(user_telno, ' ') AS user_telno
+			, COALESCE(user_addr, ' ') AS user_addr
 			, user_aprv_yn
 		FROM public.user
 		WHERE user_no=#{userNo}

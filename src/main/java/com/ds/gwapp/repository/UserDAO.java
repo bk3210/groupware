@@ -6,6 +6,7 @@ import com.ds.gwapp.domain.UserDTO;
 
 public interface UserDAO {
 	List<UserDTO> getList(UserDTO dto);
+	UserDTO getView(int userNo);
 	void insert(UserDTO dto);
 	void modify(UserDTO dto);
 	void delete(UserDTO dto);

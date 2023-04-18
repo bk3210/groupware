@@ -8,31 +8,35 @@ import org.springframework.stereotype.Repository;
 
 import com.ds.gwapp.domain.UserDTO;
 
-
 @Repository("userDAO")
 public class UserDAORepository implements UserDAO {
 	@Autowired
 	SqlSessionTemplate sm;
-	
+
 	@Override
 	public List<UserDTO> getList(UserDTO dto) {
 		return sm.selectList("User_getList", dto);
 	}
-	
+
 	@Override
 	public void insert(UserDTO dto) {
 		sm.insert("User_insert", dto);
 	}
-	
+
+	@Override
+	public UserDTO getView(int userNo) {
+		return sm.selectOne("User_getView", userNo);
+	}
+
 	@Override
 	public void modify(UserDTO dto) {
 		// TODO Auto-generated method stub
-		
+
 	}
-	
+
 	@Override
 	public void delete(UserDTO dto) {
 		// TODO Auto-generated method stub
-		
+
 	}
 }

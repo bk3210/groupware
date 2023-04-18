@@ -12,6 +12,7 @@
 		FROM public.dept
 		ORDER BY dept_no		
 	</select>
+
 	
 <!--	<insert id="Dept_insert" parameterType="DeptDTO">
 		

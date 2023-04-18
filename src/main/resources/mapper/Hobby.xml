@@ -1,44 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper
-	 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-	 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="Hobby">
 	<select id="Hobby_getList" parameterType="HobbyDTO" resultType="HobbyDTO">
 		SELECT hobby_nm
 				, hobby_no
-		FROM public.hobby		
+		FROM public.hobby
 	</select>
-	
+
 	<insert id="Hobby_insert" parameterType="HobbyDTO">
 		INSERT INTO user_hobby (
 								user_hobby_hobby_no
 								, user_hobby_user_no
 								)
-							values (
+						values (
 								#{userHobbyHobbyNo}
 								, #{userHobbyUserNo}
-								)
+		)
 	</insert>
-	
-<!--	<update id="User_update" parameterType="UserDTO">
-		<selectKey resultType="java.lang.String" keyProperty="deptNo" order="AFTER">
-			SELECT a.hobby_nm
-			FROM a.hobby
-			WHERE 
-		</selectKey>
-		UPDATE public.user AS a.user
-		INNER JOIN user_hobby AS b.user_hobby
-			SET user_id=#{userId}
-				, user_nm=#{userNm}
-				, user_eml_addr=#{userEmlAddr}
-				, user_dept_no=#{userDeptNo}
-				, user_telno=#{userTelno}
-				, user_addr=#{userAddr}
-				, user_aprv_yn=#{userAprvYn}
-		where user_no=#{userNo}
-	</update>-->
-	
-	
-	
+
+	<select id="Hobby_getMyHobby" parameterType="int" resultType="HobbyDTO">
+		SELECT COALESCE(user_hobby_hobby_no, 0) AS user_hobby_hobby_no
+			, COALESCE(user_hobby_user_no, 0) AS user_hobby_user_no
+		FROM public.user_hobby
+		WHERE user_hobby_user_no = #{userNo}
+	</select>
 </mapper>

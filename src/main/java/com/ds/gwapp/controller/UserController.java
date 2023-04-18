@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -40,8 +41,7 @@ public class UserController {
 		List<UserDTO> userList = userService.getList(userDTO);
 		List<DeptDTO> deptList = deptService.getList(deptDTO);
 		List<HobbyDTO> hobbyList = hobbyService.getList(hobbyDTO);
-		System.out.println(deptList.get(0).getDeptNm());
-		System.out.println(hobbyList.get(0).getHobbyNm());
+		
 		model.addAttribute("result", userList);
 		model.addAttribute("dept", deptList);
 		model.addAttribute("hobby", hobbyList);
@@ -69,9 +69,21 @@ public class UserController {
 		return map;
 	}
 	
-	/*
-	 * @GetMapping("/user/userList")
-	 * public String
-	 */
-
+	@GetMapping("/user/userList/{userNo}")
+	public String getView(@PathVariable("userNo") int userNo, DeptDTO deptDTO, HobbyDTO hobbyDTO, UserDTO userDTO, UserDTO dto, Model model){
+		List<UserDTO> userList = userService.getList(userDTO);		
+		UserDTO resultDTO = userService.getView(userNo);
+		List<DeptDTO> deptList = deptService.getList(deptDTO);
+		List<HobbyDTO> hobbyList = hobbyService.getList(hobbyDTO);
+		List<HobbyDTO> myHobbyList = hobbyService.getMyHobby(userNo);
+		
+		model.addAttribute("resultDTO", resultDTO);
+		model.addAttribute("result", userList);
+		model.addAttribute("dept", deptList);
+		model.addAttribute("hobby", hobbyList);
+		model.addAttribute("myHobby", myHobbyList);
+		
+		return "userView";
+	}	
+	
 }

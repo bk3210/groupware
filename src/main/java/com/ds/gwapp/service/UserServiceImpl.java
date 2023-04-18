@@ -26,5 +26,10 @@ public class UserServiceImpl implements UserService {
 		userDAO.insert(dto);
 	}
 	
+	@Override
+	public UserDTO getView(int userNo) {
+		return userDAO.getView(userNo);
+	}
+	
 
 }

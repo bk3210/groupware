@@ -3,7 +3,9 @@ package com.ds.gwapp.domain;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 // @AllArgsConstructor : 객체 내부의 인스턴스 멤버들을 모두 가진 생성자를 생성
 // @NoArgsConstructor : 멤버변수가 없는 생성자(기본생성자) 생성
@@ -11,6 +13,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 @Data
+@Getter
+@Setter
 public class UserDTO {
 	private String userNo;
 	private String userId;
