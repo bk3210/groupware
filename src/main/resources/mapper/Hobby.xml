@@ -8,7 +8,7 @@
 		FROM public.hobby
 	</select>
 
-	<insert id="Hobby_insert" parameterType="HobbyDTO">
+	<insert id="Hobby_insertMyHobby" parameterType="HobbyDTO">
 		INSERT INTO user_hobby (
 								user_hobby_hobby_no
 								, user_hobby_user_no
@@ -34,14 +34,14 @@
 	
 	<update id="Hobby_updateMyHobby" parameterType="HobbyDTO">
 		UPDATE table public.user_hobby
-		
+		SET user_hobby_hobby_no
+			, user_hobby_user_no
+		WHERE user_hobby_user_no=#{userNo}
+		AND user_hobby_hobby_no=#{user_hobby_hobby_no}		
 	</update>
 	
-	<delete id="hobby_deleteMyHobby" parameterType="HobbyDTO">
+	<delete id="hobby_deleteMyHobby" parameterType="Integer">
 		DELETE FROM public.user_hobby
-		WHERE user_hobby_hobby_no=#{userHobbyHobbyNo} 
-		and user_hobby_user_no=#{userHobbyUserNo}
+		WHERE user_hobby_user_no=#{userNo}
 	</delete>
-	
-	
 </mapper>

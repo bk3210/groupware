@@ -22,5 +22,20 @@ public class HobbyDAORepository implements HobbyDAO {
 	public List<HobbyDTO> getMyHobby(int userNo) {
 		return sm.selectList("Hobby_getMyHobby", userNo);
 	}
+	
+	@Override
+	public void insertMyHobby(HobbyDTO dto) {
+		sm.insert("Hobby_insertMyHobby");
+	}
+	
+	@Override
+	public void updateMyHobby(HobbyDTO dto) {
+		sm.update("Hobby_updateMyHobby");
+	}
+	
+	@Override
+	public void deleteMyHobby(int userNo) {
+		sm.delete("Hobby_deleteMyHobby");
+	}
 
 }

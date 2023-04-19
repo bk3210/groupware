@@ -29,13 +29,12 @@ public class UserDAORepository implements UserDAO {
 	}
 
 	@Override
-	public void modify(UserDTO dto) {
+	public void update(UserDTO dto) {
 		sm.update("User_modify", dto);
 	}
 
 	@Override
-	public void delete(UserDTO dto) {
-		// TODO Auto-generated method stub
-
+	public void delete(int userNo) {
+		sm.delete("User_delete", userNo);
 	}
 }

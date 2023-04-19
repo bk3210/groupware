@@ -8,6 +8,6 @@ public interface UserDAO {
 	List<UserDTO> getList(UserDTO dto);
 	UserDTO getView(int userNo);
 	void insert(UserDTO dto);
-	void modify(UserDTO dto);
-	void delete(UserDTO dto);
+	void update(UserDTO dto);
+	void delete(int userNo);
 }

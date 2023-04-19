@@ -24,4 +24,20 @@ public class HobbyServiceImpl implements HobbyService {
 	public List<HobbyDTO> getMyHobby(int userNo) {
 		return hobbyDAO.getMyHobby(userNo);
 	}
+	
+	@Override
+	public void insertMyHobby(HobbyDTO dto) {
+		hobbyDAO.insertMyHobby(dto);
+	}
+	
+	@Override
+	public void updateMyHobby(HobbyDTO dto) {
+		hobbyDAO.updateMyHobby(dto);
+	}
+	
+	@Override
+	public void deleteMyHobby(int userNo) {
+		hobbyDAO.deleteMyHobby(userNo);
+	}
+	
 }

@@ -32,8 +32,13 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	@Override
-	public void modify(UserDTO dto) {
-		userDAO.modify(dto);
+	public void update(UserDTO dto) {
+		userDAO.update(dto);
+	}
+	
+	@Override
+	public void delete(int userNo) {
+		userDAO.delete(userNo);
 	}
 
 }

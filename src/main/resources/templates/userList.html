@@ -12,26 +12,23 @@
 	</head>
 
 <body>
-	<!--<form name="myform" id="myform" method="POST" action="/user/save">-->
-	<div class="container mt-3">
-		<h1>관리자 포털</h1>
-	</div>
-	<div class="container mt-3">
+	<form name="searchform" id="searchform" method="POST" action="/user/userList">
+		<div class="container mt-3">
+			<h1>관리자 포털</h1>
+		</div>
+		<div class="container mt-3">
 
-		<div class="container">
-			<div class="input-group mb-3">
-				<input type="text" class="form-control" placeholder="조회하실 사원명을 입력하세요" aria-label="검색어를 입력하세요"
-					aria-describedby="basic-addon2">
-				<div class="input-group-append">&nbsp;
-					<button class="btn btn-primary" type="button" id="btnSearch">검색</button>
+			<div class="container">
+				<div class="input-group mb-3">
+					<input type="text" class="form-control" placeholder="조회하실 사원명을 입력하세요" aria-label="검색어를 입력하세요"
+						aria-describedby="basic-addon2">
+					<div class="input-group-append">&nbsp;
+						<button class="btn btn-primary" type="button" id="btnSearch">검색</button>
+					</div>
 				</div>
 			</div>
 		</div>
-
-	</div>
-
-
-	</div>
+	</form>
 	<div class="container mt-3">
 		<div class="row">
 			<div class="col">
@@ -49,11 +46,14 @@
 					<tbody>
 						<tr>
 						<tr th:each="userList:${result}">
-							<td><a th:href="@{/user/userList/{userNo}(userNo=${userList.userNo})}"><span
+							<td><a th:if="${userList.userNo != null}"
+									th:href="@{/user/userList/{userNo}(userNo=${userList.userNo})}"><span
 										th:text="${userList.userId}"></span></a></td>
 							<td><span th:text="${userList.userNm}"></span></td>
 							<td><span th:text="${userList.deptNm}"></span></td>
-							<td><span th:text="${userList.userAprvYn}"></span></td>
+							<td><span th:if="${userList.userAprvYn=='n'}">승인 요청</span>
+								<span th:if="${userList.userAprvYn=='y'}">승인</span>
+							</td>
 						</tr>
 						</tr>
 						</tr>
@@ -62,13 +62,14 @@
 			</div>
 			<div class="col">
 				<h3>회원 상세정보</h3>
-				<table class="table table-bordered">
-					<tbody>
+				<div name="myform" id="myform" method="post" th:if="${resultDTO!=null}"
+					th:action="@{/user/modify/{userNo}(userNo=${resultDTO.userNo})}" th:object="${resultDTO}">
+					<table class="table table-bordered">
 						<tr>
 							<th>ID</th>
 							<td>
 								<div class="input-group">
-									<input type="text" class="form-control" name="userId"
+									<input type="text" class="form-control" th:value="${resultDTO.userId}" name="userId"
 										id="userId">
 								</div>
 							</td>
@@ -76,7 +77,7 @@
 							<th>사원명</th>
 							<td>
 								<div class="input-group">
-									<input type="text" class="form-control" name="userNm"
+									<input type="text" class="form-control" th:value="${resultDTO.userNm}" name="userNm"
 										id="userNm">
 								</div>
 							</td>
@@ -85,8 +86,8 @@
 							<th>이메일</th>
 							<td>
 								<div class="input-group">
-									<input type="email" class="form-control" name="userEmlAddr"
-										id="userEmlAddr">
+									<input type="email" class="form-control" th:value="${resultDTO.userEmlAddr}"
+										name="userEmlAddr" id="userEmlAddr">
 								</div>
 							</td>
 						</tr>
@@ -96,9 +97,10 @@
 							<td>
 								<div class="input-group">
 									<select class="custom-select" name="deptNo">
-										<option value="0">선택하세요</option>
 										<option th:each="dept:${dept}" th:value="${dept.deptNo}"
-											th:utext="${dept.deptNm}"></option>
+											th:utext="${dept.deptNm}"
+											th:selected="${dept.deptNo}==${resultDTO.userDeptNo}">
+										</option>
 									</select>
 								</div>
 							</td>
@@ -108,8 +110,8 @@
 							<th>전화번호</th>
 							<td>
 								<div class="input-group">
-									<input type="tel" class="form-control" name="userTelno"
-										id="userTelno">
+									<input type="tel" class="form-control" th:value="${resultDTO.userTelno}"
+										name="userTelno" id="userTelno">
 								</div>
 							</td>
 						</tr>
@@ -117,8 +119,8 @@
 							<th>주소</th>
 							<td>
 								<div class="input-group">
-									<input type="text" class="form-control" name="userAddr"
-										id="userAddr">
+									<input type="text" class="form-control" th:value="${resultDTO.userAddr}"
+										name="userAddr" id="userAddr">
 								</div>
 							</td>
 						</tr>
@@ -127,9 +129,11 @@
 							<td>
 								<div class="input-group">
 									<div th:each="hobby:${hobby}" class="form-check form-check-inline">
-										<input type="checkbox" name="hobbyNo" th:value="${hobby.hobbyNo}"
+										<input type="checkbox" name="userNo" id="userNo" th:value="${hobby.hobbyNo}"
+											th:checked="${#strings.contains(myHobby, hobby.hobbyNo)}"
 											class="form-check-input">
-										<label th:text="${hobby.hobbyNm}" class="form-check-label">
+										<label th:text="${hobby.hobbyNm}" name="hobbyNm" id="hobbyNm"
+											class="form-check-label">
 										</label>
 									</div>
 								</div>
@@ -139,20 +143,23 @@
 							<th>상태</th>
 							<td>
 								<div class="input-group">
-									<input type="text" class="form-control" name="userAprvYn"
-										id="userAprvYn">
+									<input type="text" class="form-control" th:value="${resultDTO.userAprvYn}"
+										name="userAprvYn" id="userAprvYn">
 								</div>
 							</td>
 						</tr>
 						</tr>
 						</tr>
-					</tbody>
-				</table>
-				<div class="container" style="text-align:right">
-					<button type="button" class="btn btn-primary" id="btnModify">수정</button>&nbsp;
-					<button type="button" class="btn btn-primary" id="btnDelete">삭제</button>
+						</tbody>
+					</table>
+					<div class="container" style="text-align:right">
+						<button type="submit" class="btn btn-primary" id="btnModify">수정</button>&nbsp;
+						<button type="button" class="btn btn-primary" id="btnDelete"
+							th:onclick="|location.href='@{/user/delete/{userNo}(userNo=${resultDTO.userNo})}'|">삭제</button>
+					</div>
 				</div>
 			</div>
+			</form>
 		</div>
 </body>
 

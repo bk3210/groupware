@@ -69,9 +69,13 @@
 				, user_telno=#{userTelno}
 				, user_addr=#{userAddr}
 				, user_aprv_yn=#{userAprvYn}
-		LEFT JOIN public."dept" B
-		ON A.user_dept_no = B.dept_no
 		WHERE user_no=#{userNo}
 	</update>
+	
+	<delete id="user_delete" parameterType="Integer">
+		DELETE FROM public.user
+		WHERE user_no=#{userNo}
+		
+	</delete>
 	
 </mapper>

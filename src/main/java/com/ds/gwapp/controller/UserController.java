@@ -1,8 +1,8 @@
 package com.ds.gwapp.controller;
 
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -96,14 +96,30 @@ public class UserController {
 		model.addAttribute("hobby", hobbyList);
 		model.addAttribute("myHobby", buffer);
 		
-		return "userView";
+		return "userList";
 	}
 	
-	@RequestMapping(value="/user/modify")
-	public String user_modify(UserDTO userDTO, DeptDTO deptDTO, HobbyDTO hobbyDTO, Model model) {
-		userService.modify(userDTO);
-		model.addAttribute("modifyDTO", userDTO);		
+	@RequestMapping(value="/user/modify/{userNo}")
+	public String user_modify(@PathVariable int userNo, UserDTO userDTO, DeptDTO deptDTO, HobbyDTO hobbyDTO, Model model) {
+		userService.update(userDTO);
+		if (hobbyDTO.getUserHobbyHobbyNo() != 0) {
+			hobbyService.deleteMyHobby(userNo);			
+		}
+		
+		hobbyService.insertMyHobby(hobbyDTO);
+		
+		
+		model.addAttribute("modifyDTO", userDTO);
+		
+		
 		return "userList";
+	}
+	
+	@RequestMapping(value="/user/delete/{userNo}")
+	public String user_delete(@PathVariable("userNo") int userNo, UserDTO userDTO, HobbyDTO HobbyDTO, Model model) {
+		userService.delete(userNo);
+		hobbyService.deleteMyHobby(userNo);
+		return "redirect:/user/userList";
 	}
 	
 }
