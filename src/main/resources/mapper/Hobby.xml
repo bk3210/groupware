@@ -19,10 +19,29 @@
 		)
 	</insert>
 
-	<select id="Hobby_getMyHobby" parameterType="int" resultType="HobbyDTO">
-		SELECT COALESCE(user_hobby_hobby_no, 0) AS user_hobby_hobby_no
-			, COALESCE(user_hobby_user_no, 0) AS user_hobby_user_no
+<!--	<select id="Hobby_getMyHobby" parameterType="int" resultType="HobbyDTO">-->
+<!--		SELECT COALESCE(user_hobby_hobby_no, 0) AS user_hobby_hobby_no-->
+<!--			, COALESCE(user_hobby_user_no, 0) AS user_hobby_user_no-->
+<!--		FROM public.user_hobby-->
+<!--		WHERE user_hobby_user_no = #{userNo}-->
+<!--	</select>-->
+
+	<select id="Hobby_getMyHobby" resultType="HobbyDTO">
+		SELECT user_hobby_hobby_no, user_hobby_user_no
 		FROM public.user_hobby
 		WHERE user_hobby_user_no = #{userNo}
 	</select>
+	
+	<update id="Hobby_updateMyHobby" parameterType="HobbyDTO">
+		UPDATE table public.user_hobby
+		
+	</update>
+	
+	<delete id="hobby_deleteMyHobby" parameterType="HobbyDTO">
+		DELETE FROM public.user_hobby
+		WHERE user_hobby_hobby_no=#{userHobbyHobbyNo} 
+		and user_hobby_user_no=#{userHobbyUserNo}
+	</delete>
+	
+	
 </mapper>

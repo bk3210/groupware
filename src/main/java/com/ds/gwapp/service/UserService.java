@@ -8,6 +8,7 @@ public interface UserService {
 	List<UserDTO> getList(UserDTO dto);
 	void insert(UserDTO dto);
 	UserDTO getView(int userNo);
+	void modify(UserDTO dto);
 
 
 }

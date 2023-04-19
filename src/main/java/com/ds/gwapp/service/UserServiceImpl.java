@@ -31,5 +31,9 @@ public class UserServiceImpl implements UserService {
 		return userDAO.getView(userNo);
 	}
 	
+	@Override
+	public void modify(UserDTO dto) {
+		userDAO.modify(dto);
+	}
 
 }

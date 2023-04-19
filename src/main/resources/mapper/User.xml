@@ -61,8 +61,7 @@
 	</select>
 			
 	<update id="User_update" parameterType="UserDTO">
-		UPDATE public.user AS a.user
-		INNER JOIN user_hobby AS b.user_hobby
+		UPDATE public.user
 			SET user_id=#{userId}
 				, user_nm=#{userNm}
 				, user_eml_addr=#{userEmlAddr}
@@ -70,7 +69,9 @@
 				, user_telno=#{userTelno}
 				, user_addr=#{userAddr}
 				, user_aprv_yn=#{userAprvYn}
-		where user_no=#{userNo}
+		LEFT JOIN public."dept" B
+		ON A.user_dept_no = B.dept_no
+		WHERE user_no=#{userNo}
 	</update>
 	
 </mapper>

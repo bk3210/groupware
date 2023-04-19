@@ -9,8 +9,10 @@ server:
 
 spring:
   datasource:
-    driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/groupware?currentSchema=default_schema
+#    driver-class-name: org.postgresql.Driver
+    driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+#    url: jdbc:postgresql://localhost:5432/groupware?currentSchema=default_schema
+    url: jdbc:log4jdbc:postgresql://localhost:5432/groupware?currentSchema=default_schema
     username: user01
     password: 1234
 
@@ -29,3 +31,14 @@ mybatis:
   # column name to camel case - 반환 받는 컬럼명을 CamelCase로 받는 설정을 합니다.
   configuration:
     map-underscore-to-camel-case: true
+    
+    
+logging:
+  level:
+    jdbc:
+      sqlonly: off
+      sqltiming: info
+      resultsettable: info
+      audit: info
+      resultset: info
+      connection: info

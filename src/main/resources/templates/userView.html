@@ -52,7 +52,7 @@
 								<td><a th:href="@{/user/userList/{userNo}(userNo=${userList.userNo})}"><span
 											th:text="${userList.userId}"></span></a></td>
 								<td><span th:text="${userList.userNm}"></span></td>
-								<td><span th:text="${userList.deptNm}"></span></td>								
+								<td><span th:text="${userList.deptNm}"></span></td>
 								<td><span th:text="${userList.userAprvYn}"></span></td>
 							</tr>
 							</tr>
@@ -129,33 +129,37 @@
 								<td>
 									<div class="input-group">
 										<div th:each="hobby:${hobby}" class="form-check form-check-inline">
-											<input type="checkbox" name="hobbyNo" th:value="${hobby.hobbyNo}"
+											<input type="checkbox" name="userNo" id="userNo"
+												th:value="${hobby.hobbyNo}"
+												th:checked="${#strings.contains(myHobby, hobby.hobbyNo)}"
 												class="form-check-input">
-											<label th:text="${hobby.hobbyNm}" class="form-check-label">
+											<label th:text="${hobby.hobbyNm}" name="hobbyNm" id="hobbyNm" class="form-check-label">
 											</label>
 										</div>
 									</div>
-								</td>
-							</tr>
-							<tr>
-								<th>상태</th>
-								<td>
-									<div class="input-group">
-										<input type="text" th:if="${resultDTO.userAprvYn != null}" class="form-control"
-											th:value="${resultDTO.userAprvYn}" name="userAprvYn" id="userAprvYn">
-									</div>
-								</td>
-							</tr>
-							</tr>
-							</tr>
-						</tbody>
-					</table>
-					<div class="container" style="text-align:right">
-						<button type="button" class="btn btn-primary" id="btnModify">수정</button>&nbsp;
-						<button type="button" class="btn btn-primary" id="btnDelete">삭제</button>
-					</div>
 				</div>
 			</div>
+			</td>
+			</tr>
+			<tr>
+				<th>상태</th>
+				<td>
+					<div class="input-group">
+						<input type="text" th:if="${resultDTO.userAprvYn != null}" class="form-control"
+							th:value="${resultDTO.userAprvYn}" name="userAprvYn" id="userAprvYn">
+					</div>
+				</td>
+			</tr>
+			</tr>
+			</tr>
+			</tbody>
+			</table>
+			<div class="container" style="text-align:right">
+				<button type="button" class="btn btn-primary" id="btnModify">수정</button>&nbsp;
+				<button type="button" class="btn btn-primary" id="btnDelete">삭제</button>
+			</div>
+		</div>
+		</div>
 		</div>
 </body>
 

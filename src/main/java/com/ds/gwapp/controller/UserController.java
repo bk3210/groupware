@@ -1,6 +1,7 @@
 package com.ds.gwapp.controller;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
@@ -73,17 +74,36 @@ public class UserController {
 	public String getView(@PathVariable("userNo") int userNo, DeptDTO deptDTO, HobbyDTO hobbyDTO, UserDTO userDTO, UserDTO dto, Model model){
 		List<UserDTO> userList = userService.getList(userDTO);		
 		UserDTO resultDTO = userService.getView(userNo);
+		
 		List<DeptDTO> deptList = deptService.getList(deptDTO);
 		List<HobbyDTO> hobbyList = hobbyService.getList(hobbyDTO);
-		List<HobbyDTO> myHobbyList = hobbyService.getMyHobby(userNo);
 		
+		List<HobbyDTO> myHobbyList = hobbyService.getMyHobby(userNo);
+		/*
+		 * System.out.println("myHobbyList start"); System.out.println(myHobbyList);
+		 * System.out.println("myHobbyList end");
+		 */
+		StringBuffer buffer = new StringBuffer();
+		for (int i = 0; i < myHobbyList.size() ; i++) {
+			buffer.append(myHobbyList.get(i).getUserHobbyHobbyNo());
+			if(i < myHobbyList.size()-1) {
+				buffer.append(",");
+			}
+		}			
 		model.addAttribute("resultDTO", resultDTO);
 		model.addAttribute("result", userList);
 		model.addAttribute("dept", deptList);
 		model.addAttribute("hobby", hobbyList);
-		model.addAttribute("myHobby", myHobbyList);
+		model.addAttribute("myHobby", buffer);
 		
 		return "userView";
-	}	
+	}
+	
+	@RequestMapping(value="/user/modify")
+	public String user_modify(UserDTO userDTO, DeptDTO deptDTO, HobbyDTO hobbyDTO, Model model) {
+		userService.modify(userDTO);
+		model.addAttribute("modifyDTO", userDTO);		
+		return "userList";
+	}
 	
 }

@@ -2,18 +2,20 @@ package com.ds.gwapp.domain;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
+@ToString
 public class HobbyDTO {
-	private String hobbyNo;
+	private int hobbyNo;
 	private String hobbyNm;
 	
-	private String userNo;
+	private int userNo;
 	private String userNm;
 	
-	private String userHobbbyHobbyNo;
-	private String userHobbyUserNo;
+	private int userHobbyHobbyNo;
+	private int userHobbyUserNo;
 	
 	private String userHobbyPkey;
 

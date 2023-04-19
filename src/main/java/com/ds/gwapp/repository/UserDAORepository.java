@@ -30,8 +30,7 @@ public class UserDAORepository implements UserDAO {
 
 	@Override
 	public void modify(UserDTO dto) {
-		// TODO Auto-generated method stub
-
+		sm.update("User_modify", dto);
 	}
 
 	@Override

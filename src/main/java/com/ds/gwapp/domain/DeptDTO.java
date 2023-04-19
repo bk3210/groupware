@@ -12,7 +12,7 @@ import lombok.Setter;
 @Builder
 @Data
 public class DeptDTO {
-	private String deptNo;
+	private int deptNo;
 	private String deptId;
 	private String deptNm;
 	private String DeptOperYn;
