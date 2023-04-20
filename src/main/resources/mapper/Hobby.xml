@@ -9,12 +9,12 @@
 	</select>
 
 	<insert id="Hobby_insertMyHobby" parameterType="HobbyDTO">
-		INSERT INTO user_hobby (
+		INSERT INTO public.user_hobby (
 								user_hobby_hobby_no
 								, user_hobby_user_no
 								)
 						values (
-								#{userHobbyHobbyNo}
+								#{userHobbyCd}
 								, #{userHobbyUserNo}
 		)
 	</insert>
@@ -32,15 +32,9 @@
 		WHERE user_hobby_user_no = #{userNo}
 	</select>
 	
-	<update id="Hobby_updateMyHobby" parameterType="HobbyDTO">
-		UPDATE table public.user_hobby
-		SET user_hobby_hobby_no
-			, user_hobby_user_no
-		WHERE user_hobby_user_no=#{userNo}
-		AND user_hobby_hobby_no=#{user_hobby_hobby_no}		
-	</update>
+
 	
-	<delete id="hobby_deleteMyHobby" parameterType="Integer">
+	<delete id="Hobby_deleteMyHobby" parameterType="Integer">
 		DELETE FROM public.user_hobby
 		WHERE user_hobby_user_no=#{userNo}
 	</delete>

@@ -20,10 +20,10 @@
 
 			<div class="container">
 				<div class="input-group mb-3">
-					<input type="text" class="form-control" placeholder="조회하실 사원명을 입력하세요" aria-label="검색어를 입력하세요"
+					<input type="text" name="searchKey" id="searchKey" th:value="${searchKey}" class="form-control" placeholder="조회하실 사원 아이디를 입력하세요" aria-label="검색어를 입력하세요"
 						aria-describedby="basic-addon2">
 					<div class="input-group-append">&nbsp;
-						<button class="btn btn-primary" type="button" id="btnSearch">검색</button>
+						<button class="btn btn-primary" type="submit" id="btnSearch">검색</button>
 					</div>
 				</div>
 			</div>
@@ -43,7 +43,6 @@
 						</tr>
 					</thead>
 					<tbody>
-					<tbody>
 						<tr>
 						<tr th:each="userList:${result}">
 							<td><a th:if="${userList.userNo != null}"
@@ -62,8 +61,8 @@
 			</div>
 			<div class="col">
 				<h3>회원 상세정보</h3>
-				<div name="myform" id="myform" method="post" th:if="${resultDTO!=null}"
-					th:action="@{/user/modify/{userNo}(userNo=${resultDTO.userNo})}" th:object="${resultDTO}">
+				<form name="myform" id="myform" method="post" th:if="${resultDTO!=null}"
+					th:action="@{/user/modify/{userNo}(userNo=${resultDTO.userNo})}">
 					<table class="table table-bordered">
 						<tr>
 							<th>ID</th>
@@ -96,7 +95,7 @@
 							<th>부서</th>
 							<td>
 								<div class="input-group">
-									<select class="custom-select" name="deptNo">
+									<select class="custom-select" name="userDeptNo">
 										<option th:each="dept:${dept}" th:value="${dept.deptNo}"
 											th:utext="${dept.deptNm}"
 											th:selected="${dept.deptNo}==${resultDTO.userDeptNo}">
@@ -129,7 +128,8 @@
 							<td>
 								<div class="input-group">
 									<div th:each="hobby:${hobby}" class="form-check form-check-inline">
-										<input type="checkbox" name="userNo" id="userNo" th:value="${hobby.hobbyNo}"
+										<input type="checkbox" name="userHobbyCd" id="userHobbyCd"
+											th:value="${hobby.hobbyNo}"
 											th:checked="${#strings.contains(myHobby, hobby.hobbyNo)}"
 											class="form-check-input">
 										<label th:text="${hobby.hobbyNm}" name="hobbyNm" id="hobbyNm"
@@ -157,10 +157,10 @@
 						<button type="button" class="btn btn-primary" id="btnDelete"
 							th:onclick="|location.href='@{/user/delete/{userNo}(userNo=${resultDTO.userNo})}'|">삭제</button>
 					</div>
-				</div>
 			</div>
-			</form>
 		</div>
+		</form>
+	</div>
 </body>
 
 </html>

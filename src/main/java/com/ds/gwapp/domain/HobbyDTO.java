@@ -16,7 +16,8 @@ public class HobbyDTO {
 	
 	private int userHobbyHobbyNo;
 	private int userHobbyUserNo;
-	
-	private String userHobbyPkey;
+
+	private String userHobbyCd;
+	private String userHobbyUd;
 
 }

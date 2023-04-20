@@ -30,7 +30,7 @@ public class UserDAORepository implements UserDAO {
 
 	@Override
 	public void update(UserDTO dto) {
-		sm.update("User_modify", dto);
+		sm.update("User_update", dto);
 	}
 
 	@Override

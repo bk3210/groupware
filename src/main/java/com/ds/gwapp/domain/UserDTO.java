@@ -20,10 +20,12 @@ public class UserDTO {
 	private String userId;
 	private String userNm;
 	private String userEmlAddr;
-	private String userDeptNo;
+	private int userDeptNo;
 	private String userTelno;
 	private String userAddr;
 	private String userAprvYn;
+	
+	private String searchKey="";
 	
 	private String deptNo;
 	private String deptNm;
