@@ -8,8 +8,7 @@ import com.ds.gwapp.domain.HobbyDTO;
 import com.ds.gwapp.domain.UserDTO;
 import com.ds.gwapp.repository.HobbyDAO;
 
-import jakarta.annotation.Resource;
-
+import javax.annotation.Resource;
 @Service("hobbyService")
 public class HobbyServiceImpl implements HobbyService {
 	@Resource(name="hobbyDAO")

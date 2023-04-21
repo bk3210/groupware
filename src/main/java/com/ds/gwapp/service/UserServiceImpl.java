@@ -2,12 +2,14 @@ package com.ds.gwapp.service;
 
 import java.util.List;
 
+import javax.annotation.Resource;
+
 import org.springframework.stereotype.Service;
 
 import com.ds.gwapp.domain.UserDTO;
 import com.ds.gwapp.repository.UserDAO;
 
-import jakarta.annotation.Resource;
+
 import lombok.extern.log4j.Log4j2;
 
 @Service("userService")

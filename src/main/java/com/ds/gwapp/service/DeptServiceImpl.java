@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import com.ds.gwapp.domain.DeptDTO;
 import com.ds.gwapp.repository.DeptDAO;
 
-import jakarta.annotation.Resource;
+import javax.annotation.Resource;
 import lombok.extern.log4j.Log4j2;
 
 @Service("deptService")
