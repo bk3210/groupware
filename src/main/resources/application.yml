@@ -14,8 +14,8 @@ spring:
     driver-class-name: oracle.postgresql.Driver
 #    url: jdbc:postgresql://localhost:5432/groupware?currentSchema=default_schema
 #    url: jdbc:log4jdbc:postgresql://localhost:5432/groupware?currentSchema=default_schema
-    url: jdbc:postgresql://34.64.187.254/user_db
-    username: user01
+    url: jdbc:postgresql://34.64.187.254/postgres
+    username: postgres
     password: 1234
 
   thymeleaf:
