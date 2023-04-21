@@ -1,8 +1,9 @@
 package com.ds.gwapp.controller;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
+import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,8 +19,6 @@ import com.ds.gwapp.domain.UserDTO;
 import com.ds.gwapp.service.DeptService;
 import com.ds.gwapp.service.HobbyService;
 import com.ds.gwapp.service.UserService;
-
-import jakarta.annotation.Resource;
 
 @Controller
 public class UserController {
