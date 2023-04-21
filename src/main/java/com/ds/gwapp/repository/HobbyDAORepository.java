@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.ds.gwapp.domain.HobbyDTO;
+import com.ds.gwapp.domain.UserDTO;
 
 @Repository("hobbyDAO")
 public class HobbyDAORepository implements HobbyDAO {
@@ -29,13 +30,10 @@ public class HobbyDAORepository implements HobbyDAO {
 	}
 	
 	@Override
-	public void updateMyHobby(HobbyDTO dto) {
-		sm.update("Hobby_updateMyHobby");
-	}
-	
-	@Override
 	public void deleteMyHobby(int userNo) {
 		sm.delete("Hobby_deleteMyHobby");
 	}
+	
+
 
 }

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.ds.gwapp.domain.HobbyDTO;
+import com.ds.gwapp.domain.UserDTO;
 import com.ds.gwapp.repository.HobbyDAO;
 
 import jakarta.annotation.Resource;
@@ -30,14 +31,11 @@ public class HobbyServiceImpl implements HobbyService {
 		hobbyDAO.insertMyHobby(dto);
 	}
 	
-	@Override
-	public void updateMyHobby(HobbyDTO dto) {
-		hobbyDAO.updateMyHobby(dto);
-	}
 	
 	@Override
 	public void deleteMyHobby(int userNo) {
 		hobbyDAO.deleteMyHobby(userNo);
 	}
+	
 	
 }

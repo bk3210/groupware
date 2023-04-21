@@ -1,5 +1,6 @@
 package com.ds.gwapp.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -110,20 +111,20 @@ public class UserController {
 		}
 		
 		HobbyDTO hdto = new HobbyDTO();
-		int b = 0;
+		int cd = 0;
 		if(hobbyDTO.getUserHobbyCd().contains(",")) {
 			String[] a = hobbyDTO.getUserHobbyCd().split(",");
 			for (int i = 0; i < a.length; i++) {
-				b = Integer.parseInt(a[i]);
-				hdto.setUserHobbyHobbyNo(b);
+				cd = Integer.parseInt(a[i]);
+				hdto.setUserHobbyHobbyNo(cd);
 				// hdto.setUserHobbyUserNo();
 				// System.out.println(hdto+"???????????????????????????????????????");
-				// hobbyService.insertMyHobby(hdto);			
+				//hobbyService.insertMyHobby(hdto);			
 			}
 		}	
 		return "redirect:/user/userList";
 	}
-
+	
 	@RequestMapping(value = "/user/delete/{userNo}")
 	public String user_delete(@PathVariable("userNo") int userNo, UserDTO userDTO, HobbyDTO HobbyDTO, Model model) {
 		hobbyService.deleteMyHobby(userNo);
