@@ -25,7 +25,7 @@ public class UserDTO {
 	private String userAddr;
 	private String userAprvYn;
 	
-	private String searchKey="";
+	String searchKey="";
 	
 	private String deptNo;
 	private String deptNm;
