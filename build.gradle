@@ -15,7 +15,7 @@ configurations {
 }
 
 bootBuildImage {
-	imageName = "${project.name}"
+	imageName = "${20230421.groupware}"
 }
 
 repositories {
