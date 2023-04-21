@@ -11,8 +11,6 @@ import lombok.Setter;
 // @NoArgsConstructor : 멤버변수가 없는 생성자(기본생성자) 생성
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
-@Data
 @Getter
 @Setter
 public class UserDTO {
