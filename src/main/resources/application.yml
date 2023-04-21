@@ -15,7 +15,7 @@ spring:
 #    url: jdbc:postgresql://localhost:5432/groupware?currentSchema=default_schema
 #    url: jdbc:log4jdbc:postgresql://localhost:5432/groupware?currentSchema=default_schema
     url: jdbc:postgresql://34.64.187.254:5432/postgres
-    username: postgres
+    username: bomkim
     password: 1234
 
   thymeleaf:
