@@ -8,7 +8,7 @@ import com.ds.gwapp.domain.UserDTO;
 public interface HobbyService{
 	List<HobbyDTO> getList(HobbyDTO dto);
 	List<HobbyDTO> getMyHobby(int userNo);
-	void insertMyHobby(HobbyDTO dto);
+	int insertMyHobby(HobbyDTO dto);
 	void deleteMyHobby(int userNo);
 
 }

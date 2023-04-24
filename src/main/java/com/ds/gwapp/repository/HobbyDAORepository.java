@@ -25,8 +25,9 @@ public class HobbyDAORepository implements HobbyDAO {
 	}
 	
 	@Override
-	public void insertMyHobby(HobbyDTO dto) {
-		sm.insert("Hobby_insertMyHobby");
+	public int insertMyHobby(HobbyDTO dto) {
+		
+		return sm.insert("Hobby_insertMyHobby");
 	}
 	
 	@Override

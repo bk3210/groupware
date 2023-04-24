@@ -3,12 +3,17 @@
 
 <mapper namespace="Hobby">
 	<select id="Hobby_getList" parameterType="HobbyDTO" resultType="HobbyDTO">
-		SELECT hobby_nm
+	SELECT hobby_nm
 				, hobby_no
 		FROM public.hobby
 	</select>
 
 	<insert id="Hobby_insertMyHobby" parameterType="HobbyDTO">
+		INSERT INTO public.user_hobby (user_hobby_hobby_no, user_hobby_user_no)
+			VALUES (#{userHobbyHobbyNo}, #{userHobbyUserNo})
+	</insert>
+	
+<!--	<insert id="Hobby_insertMyHobby" parameterType="HobbyDTO">
 		INSERT INTO public.user_hobby (
 								user_hobby_hobby_no
 								, user_hobby_user_no
@@ -17,7 +22,7 @@
 								#{userHobbyHobbyNo}
 								, #{userHobbyUserNo}
 		)
-	</insert>
+	</insert>-->
 
 	<select id="Hobby_getMyHobby" parameterType="int" resultType="HobbyDTO">
 		SELECT COALESCE(user_hobby_hobby_no, 0) AS user_hobby_hobby_no

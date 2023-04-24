@@ -26,8 +26,8 @@ public class HobbyServiceImpl implements HobbyService {
 	}
 	
 	@Override
-	public void insertMyHobby(HobbyDTO dto) {
-		hobbyDAO.insertMyHobby(dto);
+	public int insertMyHobby(HobbyDTO dto) {
+		return hobbyDAO.insertMyHobby(dto);
 	}
 	
 	

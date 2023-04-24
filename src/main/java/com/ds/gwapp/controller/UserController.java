@@ -77,6 +77,7 @@ public class UserController {
 		UserDTO resultDTO = userService.getView(userNo);
 
 		List<DeptDTO> deptList = deptService.getList(deptDTO);
+//		hobbyDTO.setUserHobbyUserNo(userNo);
 		List<HobbyDTO> hobbyList = hobbyService.getList(hobbyDTO);
 
 		List<HobbyDTO> myHobbyList = hobbyService.getMyHobby(userNo);
@@ -104,11 +105,11 @@ public class UserController {
 	public String user_modify(@PathVariable("userNo") int userNo, UserDTO userDTO, DeptDTO deptDTO, HobbyDTO hobbyDTO,
 			Model model) {
 		userService.update(userDTO);
-		
 		hobbyDTO.setUserHobbyUserNo(userNo);
-		//if(hobbyDTO.getUserNo()!=null) {
-		// hobbyService.deleteMyHobby(userNo);		
-		//}
+		hobbyService.deleteMyHobby(userNo);		
+		
+		// if(hobbyDTO.getUserNo()!=null) {
+		// }
 		
 		// HobbyDTO hdto = new HobbyDTO();
 		int cd = 0;
@@ -117,8 +118,8 @@ public class UserController {
 			for (int i = 0; i < a.length; i++) {
 				cd = Integer.parseInt(a[i]);
 				hobbyDTO.setUserHobbyHobbyNo(cd);
-				//System.out.println(hobbyDTO+"???????????????????????????????????????");
-				//hobbyService.insertMyHobby(hobbyDTO);			
+				
+				// hobbyService.insertMyHobby(hobbyDTO);			
 			}
 		}	
 		return "redirect:/user/userList";
