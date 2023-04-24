@@ -10,4 +10,5 @@ public interface UserDAO {
 	void insert(UserDTO dto);
 	void update(UserDTO dto);
 	void delete(int userNo);
+	UserDTO getMyId(UserDTO dto);
 }

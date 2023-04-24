@@ -104,21 +104,21 @@ public class UserController {
 	public String user_modify(@PathVariable("userNo") int userNo, UserDTO userDTO, DeptDTO deptDTO, HobbyDTO hobbyDTO,
 			Model model) {
 		userService.update(userDTO);
-		if(hobbyDTO.getUserHobbyHobbyNo()!=0) {
-			hobbyService.deleteMyHobby(userNo);
-			// hobbyDTO.setUserHobbyHobbyNo(0);		
-		}
 		
-		HobbyDTO hdto = new HobbyDTO();
+		hobbyDTO.setUserHobbyUserNo(userNo);
+		//if(hobbyDTO.getUserNo()!=null) {
+		// hobbyService.deleteMyHobby(userNo);		
+		//}
+		
+		// HobbyDTO hdto = new HobbyDTO();
 		int cd = 0;
 		if(hobbyDTO.getUserHobbyCd().contains(",")) {
 			String[] a = hobbyDTO.getUserHobbyCd().split(",");
 			for (int i = 0; i < a.length; i++) {
 				cd = Integer.parseInt(a[i]);
-				hdto.setUserHobbyHobbyNo(cd);
-				// hdto.setUserHobbyUserNo();
-				// System.out.println(hdto+"???????????????????????????????????????");
-				//hobbyService.insertMyHobby(hdto);			
+				hobbyDTO.setUserHobbyHobbyNo(cd);
+				//System.out.println(hobbyDTO+"???????????????????????????????????????");
+				//hobbyService.insertMyHobby(hobbyDTO);			
 			}
 		}	
 		return "redirect:/user/userList";

@@ -18,6 +18,5 @@ public class HobbyDTO {
 	private int userHobbyUserNo;
 
 	private String userHobbyCd;
-	private String userHobbyUd;
 
 }

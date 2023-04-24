@@ -14,35 +14,17 @@
 								, user_hobby_user_no
 								)
 						values (
-								#{userHobbyCd}
-								, #{user_hobby_user_no}
+								#{userHobbyHobbyNo}
+								, #{userHobbyUserNo}
 		)
 	</insert>
-	
-<!--	<insert id="Hobby_insertHobby" parameterType="INTEGER">
-		INSERT INTO public.user_hobby (
-								user_hobby_hobby_no
-								, user_hobby_user_no
-								)
-						values (
-								0
-								, #{userNo}
-		)
-	</insert>-->
 
-<!--	<select id="Hobby_getMyHobby" parameterType="int" resultType="HobbyDTO">-->
-<!--		SELECT COALESCE(user_hobby_hobby_no, 0) AS user_hobby_hobby_no-->
-<!--			, COALESCE(user_hobby_user_no, 0) AS user_hobby_user_no-->
-<!--		FROM public.user_hobby-->
-<!--		WHERE user_hobby_user_no = #{userNo}-->
-<!--	</select>-->
-
-	<select id="Hobby_getMyHobby" resultType="HobbyDTO">
-		SELECT user_hobby_hobby_no, user_hobby_user_no
+	<select id="Hobby_getMyHobby" parameterType="int" resultType="HobbyDTO">
+		SELECT COALESCE(user_hobby_hobby_no, 0) AS user_hobby_hobby_no
+			, COALESCE(user_hobby_user_no, 0) AS user_hobby_user_no
 		FROM public.user_hobby
 		WHERE user_hobby_user_no = #{userNo}
-	</select>
-	
+	</select>	
 	
 	<delete id="Hobby_deleteMyHobby" parameterType="Integer">
 		DELETE FROM public.user_hobby

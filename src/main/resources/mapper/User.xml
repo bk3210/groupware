@@ -79,5 +79,10 @@
 		WHERE user_no=#{userNo}
 	</delete>
 	
+	<select id="User_getMyId" parameterType="UserDTO" resultType="UserDTO">
+		SELECT user_id, user_no
+		FROM public.user
+		WHERE user_id = #{userId}
+	</select>
 	
 </mapper>

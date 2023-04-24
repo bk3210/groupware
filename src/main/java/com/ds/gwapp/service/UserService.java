@@ -10,6 +10,7 @@ public interface UserService {
 	UserDTO getView(int userNo);
 	void update(UserDTO dto);
 	void delete(int userNo);
+	UserDTO getMyId(UserDTO dto);
 
 
 }

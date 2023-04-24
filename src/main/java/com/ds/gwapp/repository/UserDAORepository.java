@@ -37,4 +37,9 @@ public class UserDAORepository implements UserDAO {
 	public void delete(int userNo) {
 		sm.delete("User_delete", userNo);
 	}
+	
+	@Override
+	public UserDTO getMyId(UserDTO dto) {
+		return sm.selectOne("User_getMyId", dto);
+	}
 }
