@@ -10,5 +10,5 @@ public class GroupWareApplication {
 		SpringApplication.run(GroupWareApplication.class, args);
 	}
 
-}
+} 
  
